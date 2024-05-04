@@ -4,17 +4,17 @@
 
 ## Features
 
-- [ ] Customizable Themes
-- [ ] Plug-in system to extend behavior
-- [ ] Realtime refresh
+-   [ ] Customizable Themes
+-   [ ] Plug-in system to extend behavior
+-   [ ] Realtime refresh
 
 ## Milestones
 
 **Current Status: WIP mocks**
 
-- [ ] Account/Profile Mock
-- [ ] Setting Page Mock
-- [ ] Timeline Mock
-- [ ] Search Mock
-- [ ] Notification Mock
-- [ ] List Mock
+-   [ ] Account/Profile Mock
+-   [ ] Setting Page Mock
+-   [ ] Timeline Mock
+-   [ ] Search Mock
+-   [ ] Notification Mock
+-   [ ] List Mock
