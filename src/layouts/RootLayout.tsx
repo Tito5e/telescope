@@ -1,9 +1,19 @@
-import { useAgentStore } from "@/libs/store/agent";
+import { ProfileControl } from "@/components/ProfileControl/ProfileControl";
 
 function RootLayout() {
-	const agent = useAgentStore((state) => state.agent);
-
-	return <span>{agent?.did}</span>;
+	return (
+		<div className="grid xl:[grid-template-areas:'header_content''control_content'] grid-cols-[240px_1fr] grid-rows-[1fr_80px] w-full h-full">
+			<header className="xl:[grid-area:header] xl:border-b xl:border-gray-600 xl:border-1">
+				a
+			</header>
+			<main className="xl:[grid-area:content] xl:border-l xl:border-gray-600 xl:border-1">
+				content
+			</main>
+			<div className="xl:[grid-area:control]">
+				<ProfileControl />
+			</div>
+		</div>
+	);
 }
 
 export { RootLayout };
