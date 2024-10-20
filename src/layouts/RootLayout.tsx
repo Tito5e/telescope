@@ -1,4 +1,5 @@
 import { ProfileControl } from "@/components/ProfileControl/ProfileControl";
+import { ContentLayout } from "@/layouts/Content/ContentLayout";
 
 function RootLayout() {
 	return (
@@ -7,7 +8,7 @@ function RootLayout() {
 				a
 			</header>
 			<main className="xl:[grid-area:content] xl:border-l xl:border-gray-600 xl:border-1">
-				content
+				<ContentLayout />
 			</main>
 			<div className="xl:[grid-area:control]">
 				<ProfileControl />
