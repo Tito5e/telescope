@@ -12,6 +12,7 @@ export const useSessionStore = create<
 		(set, get) => ({
 			accounts: [],
 			selectedAccount: undefined,
+			hasSession: false,
 
 			login: async (args) => {
 				const { accounts, selectedAccount } = get();
@@ -28,9 +29,12 @@ export const useSessionStore = create<
 						await session.resumeSession(selectedAccount);
 					if (response.success) {
 						const agent = new Agent(session);
-						useAgentStore.setState({
+						set(() => ({
+							hasSession: true,
+						}));
+						useAgentStore.setState(() => ({
 							agent,
-						});
+						}));
 					}
 				}
 				const targetAccount = accounts.find((account) => {
@@ -51,6 +55,7 @@ export const useSessionStore = create<
 							agent,
 						}));
 						set({
+							hasSession: true,
 							selectedAccount: targetAccount,
 						});
 					}
@@ -68,6 +73,7 @@ export const useSessionStore = create<
 							active: response.data.active ? true : false,
 							service: args.service,
 						},
+						hasSession: true,
 					});
 				}
 			},

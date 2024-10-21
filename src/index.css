@@ -6,3 +6,8 @@
 	width: 100dvw;
 	height: 100dvh;
 }
+
+input:-webkit-autofill {
+	-webkit-transition: background-color 9999s;
+	transition: background-color 9999s;
+}

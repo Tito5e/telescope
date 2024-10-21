@@ -1,10 +1,10 @@
-import { AppLayout } from "@/layouts/AppLayout";
+import { AuthLayout } from "@/layouts/AuthLayout";
 import { useSessionStore } from "@/libs/store/session";
 
 useSessionStore.getState().tryAutoLogin();
 
 function App() {
-	return <AppLayout />;
+	return <AuthLayout />;
 }
 
 export { App };

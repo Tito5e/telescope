@@ -1,18 +1,18 @@
-import { ProfileControl } from "@/components/ProfileControl/ProfileControl";
+import { Navigation } from "@/components/Navigation/Navigation";
 import { ContentLayout } from "@/layouts/Content/ContentLayout";
 
 function RootLayout() {
 	return (
-		<div className="grid xl:[grid-template-areas:'header_content''control_content'] grid-cols-[240px_1fr] grid-rows-[1fr_80px] w-full h-full">
-			<header className="xl:[grid-area:header] xl:border-b xl:border-gray-600 xl:border-1">
+		<div className="grid xl:[grid-template-areas:'header''content''navigation'] grid-cols-1 grid-rows-[max-content_1fr_max-content] w-full h-full">
+			<header className="xl:[grid-area:header] border-b border-gray-300 border-1">
 				a
 			</header>
-			<main className="xl:[grid-area:content] xl:border-l xl:border-gray-600 xl:border-1">
+			<main className="xl:[grid-area:content]">
 				<ContentLayout />
 			</main>
-			<div className="xl:[grid-area:control]">
-				<ProfileControl />
-			</div>
+			<footer className="xl:[grid-area:navigation] border-t border-gray-300 border-1">
+				<Navigation />
+			</footer>
 		</div>
 	);
 }
