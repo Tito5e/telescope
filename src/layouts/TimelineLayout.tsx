@@ -7,7 +7,7 @@ function TimelineLayout() {
 		isError,
 		isPending,
 	} = useTimelineQuery({
-		limit: 10,
+		limit: 30,
 		cursor: undefined,
 	});
 	if (isError) {
@@ -17,7 +17,7 @@ function TimelineLayout() {
 		return <></>;
 	}
 	return (
-		<div className="w-full flex flex-col overflow-y-scroll overflow-x-hidden pb-20">
+		<div className="w-full flex flex-col overflow-y-scroll overflow-x-hidden pb-20 overscroll-contain">
 			{timeline.feed.map((post) => (
 				<Post
 					payload={post}

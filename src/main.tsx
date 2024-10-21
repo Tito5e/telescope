@@ -11,7 +11,9 @@ const queryClient = new QueryClient();
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
 		<QueryClientProvider client={queryClient}>
-			<App />
+			<div className="font-rethink">
+				<App />
+			</div>
 		</QueryClientProvider>
 	</StrictMode>,
 );
