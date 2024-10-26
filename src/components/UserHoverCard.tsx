@@ -5,7 +5,6 @@ import {
 	useHover,
 	useInteractions,
 } from "@floating-ui/react";
-import clsx from "clsx";
 import { useNavigate } from "react-router-dom";
 import reactStringReplace from "react-string-replace";
 
@@ -41,6 +40,14 @@ function UserHoverCard({ children, className, did }: UserHoverCardProps) {
 	});
 	const { getReferenceProps, getFloatingProps } = useInteractions([hover]);
 	const navigate = useNavigate();
+
+	if (isPending) {
+		<div className={className}>{children}</div>;
+	}
+
+	if (isError) {
+		<div className={className}>{children}</div>;
+	}
 
 	return (
 		<>

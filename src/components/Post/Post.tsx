@@ -1,7 +1,7 @@
 import { AppBskyFeedPost, AtUri } from "@atproto/api";
 import { FeedViewPost } from "@atproto/api/dist/client/types/app/bsky/feed/defs";
 import clsx from "clsx";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { PostContent } from "@/components/Post/PostContent";
 import { PostMeta } from "@/components/Post/PostMeta";

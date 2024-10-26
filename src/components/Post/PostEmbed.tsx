@@ -18,6 +18,7 @@ type PostEmbedProps = {
 	embed: Embed;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function PostEmbed({ embed }: PostEmbedProps) {
 	return <div></div>;
 }

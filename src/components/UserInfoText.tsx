@@ -1,7 +1,6 @@
 import { AppBskyActorDefs } from "@atproto/api";
 import clsx from "clsx";
-import { Twemoji } from "react-emoji-render";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useProfileQuery } from "@/libs/query/profile";
 
