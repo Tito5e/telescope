@@ -3,6 +3,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import { SessionApiContext, SessionStateContext } from "@/libs/session/types";
+import { isSessionExpired } from "@/libs/session/utils";
 import { useAgentStore } from "@/libs/store/agent";
 
 export const useSessionStore = create<
@@ -78,18 +79,28 @@ export const useSessionStore = create<
 				}
 			},
 			tryAutoLogin: async () => {
-				const { selectedAccount } = get();
+				const { selectedAccount, accounts } = get();
 				if (selectedAccount) {
 					const session = new CredentialSession(
 						new URL(selectedAccount.service),
 					);
-					const response =
-						await session.resumeSession(selectedAccount);
-					if (response.success) {
-						const agent = new Agent(session);
-						useAgentStore.setState({
-							agent,
+					if (isSessionExpired(selectedAccount)) {
+						set({
+							hasSession: false,
+							selectedAccount: undefined,
+							accounts: accounts.filter(
+								(p) => p.did !== selectedAccount.did,
+							),
 						});
+					} else {
+						const response =
+							await session.resumeSession(selectedAccount);
+						if (response.success) {
+							const agent = new Agent(session);
+							useAgentStore.setState({
+								agent,
+							});
+						}
 					}
 				}
 			},

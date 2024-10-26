@@ -39,7 +39,7 @@ function PostContent({ post, record }: PostContentProps) {
 					</span>
 				</div>
 			)}
-			<div>{record.text}</div>
+			<div className="whitespace-pre-wrap break-words">{record.text}</div>
 			{post.embed && <PostEmbed embed={post.embed} />}
 		</div>
 	);

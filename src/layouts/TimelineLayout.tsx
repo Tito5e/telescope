@@ -17,7 +17,7 @@ function TimelineLayout() {
 		return <></>;
 	}
 	return (
-		<div className="w-full flex flex-col overflow-y-scroll overflow-x-hidden pb-20 overscroll-contain">
+		<div className="w-full flex flex-col overflow-x-hidden pb-20">
 			{timeline.feed.map((post) => (
 				<Post
 					payload={post}

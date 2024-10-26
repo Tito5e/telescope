@@ -5,11 +5,11 @@ import { Navigation } from "@/components/Navigation/Navigation";
 
 function RootLayout() {
 	return (
-		<div className="grid xl:[grid-template-areas:'header''content''navigation'] grid-cols-1 grid-rows-[max-content_1fr_max-content] w-full h-full">
+		<div className="grid xl:[grid-template-areas:'header''content''navigation'] grid-cols-1 grid-rows-[max-content_1fr_max-content] w-full h-screen">
 			<header className="xl:[grid-area:header] border-b border-gray-300 border-1">
 				<Header />
 			</header>
-			<main className="xl:[grid-area:content]">
+			<main className="xl:[grid-area:content] overflow-y-scroll overscroll-contain">
 				<Outlet />
 			</main>
 			<footer className="xl:[grid-area:navigation] border-t border-gray-300 border-1 fixed bg-white bottom-0 w-full">
