@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { PostContent } from "@/components/Post/PostContent";
 import { PostMeta } from "@/components/Post/PostMeta";
 import { PostShownReason } from "@/components/Post/PostShownReason";
+import { PostStatistics } from "@/components/Post/PostStatistics";
 import { getRelativeTimeString } from "@/components/Post/util";
 import { UserHoverCard } from "@/components/UserHoverCard";
 
@@ -85,6 +86,13 @@ function PostInner({
 					</div>
 					<div className="w-full">
 						{record && <PostContent post={post} record={record} />}
+					</div>
+					<div className="w-full">
+						<PostStatistics
+							replyCount={post.replyCount}
+							repostCount={post.repostCount}
+							likeCount={post.likeCount}
+						/>
 					</div>
 					<p className="text-sm hidden">{JSON.stringify(record)}</p>
 				</div>

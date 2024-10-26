@@ -1,27 +1,52 @@
+import { VList } from "virtua";
+
 import { Post } from "@/components/Post/Post";
-import { useTimelineQuery } from "@/libs/query/timeline";
+import { useInfiniteTimelineQuery } from "@/libs/query/timeline";
 
 function TimelineLayout() {
 	const {
 		data: timeline,
-		isError,
-		isPending,
-	} = useTimelineQuery({
-		limit: 30,
-		cursor: undefined,
-	});
-	if (isError) {
+		status,
+		hasNextPage,
+		fetchNextPage,
+	} = useInfiniteTimelineQuery();
+
+	const allPosts = timeline ? timeline.pages.flatMap((d) => d.posts) : [];
+
+	if (status === "error") {
 		return <span>えらぁ</span>;
 	}
-	if (isPending) {
+	if (status === "pending") {
 		return <></>;
 	}
 	return (
-		<div className="w-full flex flex-col overflow-x-hidden pb-20">
-			{timeline.feed.map((post) => (
-				<Post payload={post} key={post.post.cid} />
-			))}
-		</div>
+		<main className="[grid-area:content] w-full h-full max-w-[800px]">
+			<VList
+				className="w-full"
+				onRangeChange={async (_, end) => {
+					if (end + 5 > allPosts.length) {
+						await fetchNextPage();
+					}
+				}}>
+				{allPosts.map((post, index) => {
+					const isLoader = index > allPosts.length - 1;
+
+					return (
+						<div className="w-full" key={index}>
+							{isLoader ? (
+								hasNextPage ? (
+									"Loading..."
+								) : (
+									"Nothing"
+								)
+							) : (
+								<Post payload={post} />
+							)}
+						</div>
+					);
+				})}
+			</VList>
+		</main>
 	);
 }
 

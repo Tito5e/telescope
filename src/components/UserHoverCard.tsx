@@ -59,6 +59,7 @@ function UserHoverCard({ children, className, did }: UserHoverCardProps) {
 			</div>
 			{isOpen && (
 				<div
+					className="z-50"
 					style={floatingStyles}
 					ref={refs.setFloating}
 					{...getFloatingProps()}>

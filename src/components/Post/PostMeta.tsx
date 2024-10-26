@@ -20,9 +20,10 @@ function PostMeta({
 	const navigate = useNavigate();
 	return (
 		<>
-			<UserHoverCard did={did}>
-				<div className="flex items-center shrink-1 grow-1 gap-2">
+			<UserHoverCard did={did} className="shrink-1 grow-1">
+				<div className="flex items-center gap-2">
 					<a
+						className="shrink-0 grow-0"
 						// hacks: for hover style
 						onMouseOver={(e) => {
 							e.currentTarget.classList.add("underline");
@@ -37,11 +38,10 @@ function PostMeta({
 							e.stopPropagation();
 							navigate(href);
 						}}>
-						<span className="font-bold shrink-0 grow-0">
-							{displayName}
-						</span>
+						<span className="font-bold">{displayName}</span>
 					</a>
 					<a
+						className="shrink-1 grow-1 overflow-x-hidden text-ellipsis"
 						// hacks: for hover style
 						onMouseOver={(e) => {
 							e.currentTarget.classList.add("underline");
@@ -56,7 +56,7 @@ function PostMeta({
 							e.stopPropagation();
 							navigate(href);
 						}}>
-						<span className="text-sm text-zinc-500 shrink-1 grow-1 overflow-x-hidden">
+						<span className="text-sm text-zinc-500 whitespace-nowrap">
 							{handle}
 						</span>
 					</a>

@@ -19,7 +19,7 @@ function PostContent({ post, record }: PostContentProps) {
 	const replyIsTargettingMe = replyAuthorDid === myDid;
 
 	return (
-		<div className="flex flex-col">
+		<div className="flex flex-col gap-2">
 			{replyAuthorDid !== "" && (
 				<div className="flex pl-2 gap-2">
 					<Reply className="w-4 h-4 text-zinc-500" />
