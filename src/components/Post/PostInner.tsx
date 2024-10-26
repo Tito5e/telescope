@@ -77,7 +77,7 @@ function PostInner({
 					<div className="w-full">
 						{record && <PostContent post={post} record={record} />}
 					</div>
-					<p className="text-sm">{JSON.stringify(record)}</p>
+					<p className="text-sm hidden">{JSON.stringify(record)}</p>
 				</div>
 			</div>
 		</div>
