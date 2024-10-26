@@ -37,7 +37,7 @@ function PostMeta({
 							e.stopPropagation();
 							navigate(href);
 						}}>
-						<span className="font-semibold shrink-0 grow-0">
+						<span className="font-bold shrink-0 grow-0">
 							{displayName}
 						</span>
 					</a>

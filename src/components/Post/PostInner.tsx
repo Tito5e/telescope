@@ -10,6 +10,7 @@ import { PostContent } from "@/components/Post/PostContent";
 import { PostMeta } from "@/components/Post/PostMeta";
 import { PostShownReason } from "@/components/Post/PostShownReason";
 import { getRelativeTimeString } from "@/components/Post/util";
+import { UserHoverCard } from "@/components/UserHoverCard";
 
 type PostProps = {
 	record: AppBskyFeedPost.Record | undefined;
@@ -45,12 +46,20 @@ function PostInner({
 			<div className="flex">
 				<div className="shrink-0 grow-0">
 					<div className="px-2 flex-col flex h-full gap-2">
-						<div className="w-10 h-10 rounded-full overflow-hidden shrink-0 grow-0">
-							<img
-								className="aspect-square w-full h-full object-cover"
-								src={post.author.avatar}
-							/>
-						</div>
+						<UserHoverCard did={post.author.did}>
+							<div
+								className="w-10 h-10 rounded-full overflow-hidden shrink-0 grow-0" // hacks: for hover style
+								onClick={(e) => {
+									e.preventDefault();
+									e.stopPropagation();
+									navigate(`/profile/${post.author.handle}`);
+								}}>
+								<img
+									className="aspect-square w-full h-full object-cover"
+									src={post.author.avatar}
+								/>
+							</div>
+						</UserHoverCard>
 						{showReplyLine && (
 							<div className="flex h-full shrink-1 grow-1">
 								<div className="border-r-2 border-gray-300 shrink-1 grow-1 w-full" />
