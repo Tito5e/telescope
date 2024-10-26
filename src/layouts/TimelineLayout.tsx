@@ -19,11 +19,7 @@ function TimelineLayout() {
 	return (
 		<div className="w-full flex flex-col overflow-x-hidden pb-20">
 			{timeline.feed.map((post) => (
-				<Post
-					payload={post}
-					className="border-b border-gray-300"
-					key={post.post.cid}
-				/>
+				<Post payload={post} key={post.post.cid} />
 			))}
 		</div>
 	);
