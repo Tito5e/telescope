@@ -13,7 +13,8 @@ function Navigation() {
 			<NavLink
 				className={({ isActive, isPending }) =>
 					clsx({
-						"p-3 border-b-4 border-transparent": true,
+						"p-3 border-b-4": true,
+						"border-transparent": !isActive && !isPending,
 						"border-lime-500": isActive,
 						"border-gray-500": isPending,
 					})
@@ -24,7 +25,8 @@ function Navigation() {
 			<NavLink
 				className={({ isActive, isPending }) =>
 					clsx({
-						"p-3 border-b-4 border-transparent": true,
+						"p-3 border-b-4": true,
+						"border-transparent": !isActive && !isPending,
 						"border-lime-500": isActive,
 						"border-gray-500": isPending,
 					})
@@ -35,7 +37,8 @@ function Navigation() {
 			<NavLink
 				className={({ isActive, isPending }) =>
 					clsx({
-						"p-3 border-b-4 border-transparent": true,
+						"p-3 border-b-4": true,
+						"border-transparent": !isActive && !isPending,
 						"border-lime-500": isActive,
 						"border-gray-500": isPending,
 					})
@@ -46,7 +49,8 @@ function Navigation() {
 			<NavLink
 				className={({ isActive, isPending }) =>
 					clsx({
-						"p-3 border-b-4 border-transparent": true,
+						"p-3 border-b-4": true,
+						"border-transparent": !isActive && !isPending,
 						"border-lime-500": isActive,
 						"border-gray-500": isPending,
 					})
@@ -57,7 +61,8 @@ function Navigation() {
 			<NavLink
 				className={({ isActive, isPending }) =>
 					clsx({
-						"p-3 border-b-4 border-transparent": true,
+						"p-3 border-b-4": true,
+						"border-transparent": !isActive && !isPending,
 						"border-lime-500": isActive,
 						"border-gray-500": isPending,
 					})
@@ -68,7 +73,8 @@ function Navigation() {
 			<NavLink
 				className={({ isActive, isPending }) =>
 					clsx({
-						"p-3 border-b-4 border-transparent": true,
+						"p-3 border-b-4": true,
+						"border-transparent": !isActive && !isPending,
 						"border-lime-500": isActive,
 						"border-gray-500": isPending,
 					})
