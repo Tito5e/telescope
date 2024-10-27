@@ -44,10 +44,10 @@ function AuthLayout() {
 	const agent = useAgentStore((state) => state.agent);
 	const hasSession = useSessionStore((state) => state.hasSession);
 
-	if (agent) {
-		return <RouterProvider router={router} />;
-	} else if (hasSession) {
+	if (hasSession && !agent) {
 		return <LoadingLayout />;
+	} else if (agent) {
+		return <RouterProvider router={router} />;
 	} else {
 		return <SigninLayout />;
 	}

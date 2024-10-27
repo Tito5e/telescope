@@ -110,6 +110,7 @@ export const useSessionStore = create<
 			partialize: (state) => ({
 				accounts: state.accounts,
 				selectedAccount: state.selectedAccount,
+				hasSession: state.hasSession,
 			}),
 		},
 	),

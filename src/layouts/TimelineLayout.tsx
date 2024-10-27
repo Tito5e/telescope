@@ -9,7 +9,7 @@ function TimelineLayout() {
 		status,
 		hasNextPage,
 		fetchNextPage,
-	} = useInfiniteTimelineQuery();
+	} = useInfiniteTimelineQuery({});
 
 	const allPosts = timeline ? timeline.pages.flatMap((d) => d.posts) : [];
 
@@ -24,7 +24,7 @@ function TimelineLayout() {
 			<VList
 				className="w-full"
 				onRangeChange={async (_, end) => {
-					if (end + 5 > allPosts.length) {
+					if (end + 10 > allPosts.length) {
 						await fetchNextPage();
 					}
 				}}>

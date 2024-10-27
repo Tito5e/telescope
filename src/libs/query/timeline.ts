@@ -2,6 +2,7 @@ import { Agent } from "@atproto/api";
 import { FeedViewPost } from "@atproto/api/dist/client/types/app/bsky/feed/defs";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 
+import { TIMELINE_FETCH_LIMIT } from "@/libs/query/consts";
 import { useAgentStore } from "@/libs/store/agent";
 
 export function useTimelineQuery({
@@ -48,13 +49,22 @@ async function fetchTimeline(
 	};
 }
 
-export function useInfiniteTimelineQuery() {
+export function useInfiniteTimelineQuery({
+	staleTime = 1000 * 5,
+	refetchInterval = 1000 * 15,
+}: {
+	staleTime?: number;
+	refetchInterval?: number;
+}) {
 	const agent = useAgentStore((state) => state.agent);
 	if (!agent) throw Error("");
 
 	return useInfiniteQuery({
 		queryKey: ["useInfiniteTimeline"],
-		queryFn: (ctx) => fetchTimeline(agent, 10, ctx.pageParam),
+		staleTime,
+		refetchInterval,
+		queryFn: (ctx) =>
+			fetchTimeline(agent, TIMELINE_FETCH_LIMIT, ctx.pageParam),
 		getNextPageParam: (lastGroup) => lastGroup.nextCursor,
 		initialPageParam: undefined as string | undefined,
 	});
