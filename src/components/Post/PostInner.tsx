@@ -92,6 +92,8 @@ function PostInner({
 							replyCount={post.replyCount}
 							repostCount={post.repostCount}
 							likeCount={post.likeCount}
+							isReposted={!!post.viewer?.repost}
+							isLiked={!!post.viewer?.like}
 						/>
 					</div>
 					<p className="text-sm hidden">{JSON.stringify(record)}</p>

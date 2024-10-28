@@ -91,9 +91,11 @@ function UserHoverCard({ children, className, did }: UserHoverCardProps) {
 									</span>
 								</div>
 								<div className="flex gap-2 w-full">
-									<span className="rounded-sm bg-gray-200 text-sm px-2 shrink-0 grow-0">
-										あなたをフォロー
-									</span>
+									{profile?.viewer?.followedBy && (
+										<span className="rounded-sm bg-gray-200 text-sm px-2 shrink-0 grow-0">
+											あなたをフォロー
+										</span>
+									)}
 									<span className="text-sm text-gray-500 overflow-hidden whitespace-nowrap text-ellipsis w-full shrink-1 grow-1">
 										@{profile?.handle}
 									</span>

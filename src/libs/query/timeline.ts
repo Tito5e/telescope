@@ -1,6 +1,11 @@
+import { useCallback } from "react";
 import { Agent } from "@atproto/api";
 import { FeedViewPost } from "@atproto/api/dist/client/types/app/bsky/feed/defs";
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import {
+	useInfiniteQuery,
+	useQuery,
+	useQueryClient,
+} from "@tanstack/react-query";
 
 import { TIMELINE_FETCH_LIMIT } from "@/libs/query/consts";
 import { useAgentStore } from "@/libs/store/agent";
@@ -68,4 +73,16 @@ export function useInfiniteTimelineQuery({
 		getNextPageParam: (lastGroup) => lastGroup.nextCursor,
 		initialPageParam: undefined as string | undefined,
 	});
+}
+
+export function useInvalidateInfiniteTimelineQuery() {
+	const queryClient = useQueryClient();
+	const invalidate = useCallback(async () => {
+		await queryClient.invalidateQueries({
+			queryKey: ["useInfiniteTimeline"],
+		});
+	}, [queryClient]);
+	return {
+		invalidate,
+	};
 }

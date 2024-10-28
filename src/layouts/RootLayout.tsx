@@ -10,7 +10,7 @@ function RootLayout() {
 				<Header />
 			</header>
 			<Outlet />
-			<footer className="[grid-area:navigation] border-t border-gray-300 border-1 fixed bg-white bottom-0 w-full">
+			<footer className="[grid-area:navigation] border-t border-gray-300 border-1 bg-white bottom-0 w-full">
 				<Navigation />
 			</footer>
 		</div>

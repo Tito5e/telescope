@@ -29,11 +29,15 @@ function PostShownReason({ reason }: PostShownReasonProps) {
 			</div>
 		);
 	} else {
-		return (
-			<div className="w-full h-full">
-				<pre>{JSON.stringify(reason)}</pre>
+		// For Debug
+		/*return (
+			<div>
+				<span className="text-blue-500 text-sm">
+					{JSON.stringify(reason)}
+				</span>
 			</div>
-		);
+		);*/
+		return <></>;
 	}
 }
 

@@ -1,7 +1,11 @@
+import PullToRefresh from "react-simple-pull-to-refresh";
 import { VList } from "virtua";
 
 import { Post } from "@/components/Post/Post";
-import { useInfiniteTimelineQuery } from "@/libs/query/timeline";
+import {
+	useInfiniteTimelineQuery,
+	useInvalidateInfiniteTimelineQuery,
+} from "@/libs/query/timeline";
 
 function TimelineLayout() {
 	const {
@@ -10,6 +14,9 @@ function TimelineLayout() {
 		hasNextPage,
 		fetchNextPage,
 	} = useInfiniteTimelineQuery({});
+
+	const { invalidate: invalidateTimeline } =
+		useInvalidateInfiniteTimelineQuery();
 
 	const allPosts = timeline ? timeline.pages.flatMap((d) => d.posts) : [];
 
@@ -21,31 +28,37 @@ function TimelineLayout() {
 	}
 	return (
 		<main className="[grid-area:content] w-full h-full max-w-[800px]">
-			<VList
-				className="w-full"
-				onRangeChange={async (_, end) => {
-					if (end + 10 > allPosts.length) {
-						await fetchNextPage();
-					}
+			<PullToRefresh
+				isPullable={false}
+				onRefresh={async () => {
+					await invalidateTimeline();
 				}}>
-				{allPosts.map((post, index) => {
-					const isLoader = index > allPosts.length - 1;
+				<VList
+					className="w-full"
+					onRangeChange={async (_, end) => {
+						if (end + 10 > allPosts.length) {
+							await fetchNextPage();
+						}
+					}}>
+					{allPosts.map((post, index) => {
+						const isLoader = index > allPosts.length - 1;
 
-					return (
-						<div className="w-full" key={index}>
-							{isLoader ? (
-								hasNextPage ? (
-									"Loading..."
+						return (
+							<div className="w-full" key={index}>
+								{isLoader ? (
+									hasNextPage ? (
+										"Loading..."
+									) : (
+										"Nothing"
+									)
 								) : (
-									"Nothing"
-								)
-							) : (
-								<Post payload={post} />
-							)}
-						</div>
-					);
-				})}
-			</VList>
+									<Post payload={post} />
+								)}
+							</div>
+						);
+					})}
+				</VList>
+			</PullToRefresh>
 		</main>
 	);
 }
